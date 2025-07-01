@@ -1,0 +1,171 @@
+[gd_scene load_steps=10 format=3 uid="uid://bvxqm2n8ywqkx"]
+
+[ext_resource type="Script" uid="uid://dd88kicvwn5gl" path="res://EndlessRunner.gd" id="1_0hdqx"]
+[ext_resource type="PackedScene" uid="uid://c2jh57aloe0hu" path="res://player/player.tscn" id="2_1mjxk"]
+[ext_resource type="Script" uid="uid://dww34pmtu1sen" path="res://CameraController.gd" id="3_2nkly"]
+[ext_resource type="Script" uid="uid://dt5mnmhvhw3eh" path="res://PlatformSpawner.gd" id="4_3olmz"]
+[ext_resource type="PackedScene" uid="uid://b4bgaxksdcx55" path="res://BG.tscn" id="5_4pnao"]
+[ext_resource type="Script" uid="uid://rahk2eyn7cg5" path="res://UI.gd" id="6_5qpbr"]
+[ext_resource type="PackedScene" uid="uid://c8xqnan7ywqkx" path="res://Platform.tscn" id="7_platform"]
+[ext_resource type="AudioStream" uid="uid://cbcbh8x3jtc8x" path="res://Sunny-land-files/Sunny-land-assets-files/Sound/platformer_level03_loop.ogg" id="8_music"]
+
+[sub_resource type="Environment" id="Environment_1abc2"]
+background_mode = 1
+background_color = Color(0.5, 0.8, 1, 1)
+
+[node name="EndlessRunner" type="Node2D"]
+script = ExtResource("1_0hdqx")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1abc2")
+
+[node name="BG" parent="." instance=ExtResource("5_4pnao")]
+
+[node name="Player" parent="." instance=ExtResource("2_1mjxk")]
+position = Vector2(50, 320)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(200, 250)
+script = ExtResource("3_2nkly")
+
+[node name="StartPlatform" parent="." instance=ExtResource("7_platform")]
+position = Vector2(50, 350)
+
+[node name="PlatformSpawner" type="Node2D" parent="."]
+script = ExtResource("4_3olmz")
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_music")
+volume_db = -10.0
+autoplay = true
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource("6_5qpbr")
+
+[node name="ScoreLabel" type="Label" parent="UI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -150.0
+offset_bottom = 40.0
+text = "Score: 0"
+horizontal_alignment = 2
+
+[node name="DistanceLabel" type="Label" parent="UI"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 150.0
+text = "Distance: 0m"
+
+[node name="HPLabel" type="Label" parent="UI"]
+offset_right = 100.0
+offset_bottom = 40.0
+text = "HP: 3"
+
+[node name="PauseButton" type="Button" parent="UI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -80.0
+offset_top = 50.0
+offset_bottom = 90.0
+text = "Pause"
+
+[node name="SpeedBoostLabel" type="Label" parent="UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -50.0
+offset_right = 100.0
+offset_bottom = 50.0
+text = "SPEED BOOST!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameOverPanel" type="Panel" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -2.0
+offset_right = 1.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/GameOverPanel"]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -100.0
+offset_right = 150.0
+offset_bottom = 100.0
+
+[node name="GameOverLabel" type="Label" parent="UI/GameOverPanel/VBoxContainer"]
+layout_mode = 2
+text = "GAME OVER"
+horizontal_alignment = 1
+
+[node name="FinalScoreLabel" type="Label" parent="UI/GameOverPanel/VBoxContainer"]
+layout_mode = 2
+text = "Final Score: 0"
+horizontal_alignment = 1
+
+[node name="FinalDistanceLabel" type="Label" parent="UI/GameOverPanel/VBoxContainer"]
+layout_mode = 2
+text = "Distance: 0m"
+horizontal_alignment = 1
+
+[node name="HighScoreLabel" type="Label" parent="UI/GameOverPanel/VBoxContainer"]
+layout_mode = 2
+text = "High Score: 0"
+horizontal_alignment = 1
+
+[node name="RestartButton" type="Button" parent="UI/GameOverPanel/VBoxContainer"]
+layout_mode = 2
+text = "Restart"
+
+[node name="MenuButton" type="Button" parent="UI/GameOverPanel/VBoxContainer"]
+layout_mode = 2
+text = "Main Menu"
+
+[node name="PausePanel" type="Panel" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/PausePanel"]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -75.0
+offset_right = 100.0
+offset_bottom = 75.0
+
+[node name="PauseLabel" type="Label" parent="UI/PausePanel/VBoxContainer"]
+layout_mode = 2
+text = "PAUSED"
+horizontal_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="UI/PausePanel/VBoxContainer"]
+layout_mode = 2
+text = "Resume"
+
+[node name="MenuButton" type="Button" parent="UI/PausePanel/VBoxContainer"]
+layout_mode = 2
+text = "Main Menu"

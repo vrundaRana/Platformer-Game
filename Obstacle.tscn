@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://d9yrn8o8zwqlx"]
+
+[ext_resource type="Script" path="res://Obstacle.gd" id="1_0hdqx"]
+[ext_resource type="Texture2D" uid="uid://bqxvgxqh47ufx" path="res://Sunny-land-files/Sunny-land-assets-files/PNG/environment/props/spikes.png" id="2_1mjxk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1abc2"]
+size = Vector2(32, 32)
+
+[node name="Obstacle" type="Area2D"]
+script = ExtResource("1_0hdqx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_1mjxk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1abc2")
