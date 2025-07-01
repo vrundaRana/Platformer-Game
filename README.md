@@ -1,4 +1,4 @@
-# Endless Platformer Game
+# Sky Runner Adventures
 
 A fast-paced endless runner platformer built with Godot 4.
 

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://main.gd" id="1_0hdqx"]
 [ext_resource type="Texture2D" uid="uid://bqxvgxqh47ufx" path="res://sunny-land-phaser-project/sunny-land/assets/sprites/title-screen.png" id="2_1mjxk"]
+[ext_resource type="Script" path="res://GameTitle.gd" id="8_title"]
 
 [sub_resource type="Environment" id="Environment_1abc2"]
 background_mode = 1
@@ -49,6 +50,21 @@ offset_top = -50.0
 offset_right = 200.0
 text = "High Score: 0 | Best Distance: 0m"
 horizontal_alignment = 1
+
+[node name="GameTitleLabel" type="Label" parent="UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -200.0
+offset_right = 200.0
+offset_bottom = -150.0
+text = "SKY RUNNER ADVENTURES"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_title")
 
 [node name="InstructionsLabel" type="Label" parent="UI"]
 anchors_preset = 2
