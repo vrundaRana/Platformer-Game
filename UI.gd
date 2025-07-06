@@ -56,7 +56,7 @@ func _on_restart_pressed():
 
 func _on_menu_pressed():
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://MainMenu.tscn")
+	get_tree().change_scene_to_packed(preload("res://MainMenu.tscn"))
 
 func _on_pause_pressed():
 	get_tree().paused = true
